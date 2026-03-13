@@ -338,130 +338,137 @@
         // 1. 
         const menuData = [
             { 
-                id: 4, name: "鸡爪煲", price: 298, desc: "", img: "./images/jizhuabao.jpg", category: "中餐", subcategory: "主菜",
+                id: 3, name: "福鼎肉片", price: 38, desc: "手工千锤百炼的精瘦鲜肉与地道红薯粉完美融合，佐以酸辣紫菜清汤，口感爽滑弹牙。", img: "./images/fudingroupian.jpg", category: "中餐", subcategory: "小吃",
+                customOptions: [
+                    { title: "辣度", choices: ["不辣", "微辣", "中辣", "超级辣"] },
+                    { title: "主食", choices: ["请备注想要的主食"] }
+                ]
+            },
+            { 
+                id: 4, name: "秘制鸡爪煲", price: 168, desc: "精选走地鸡爪慢火煨炖，软糯脱骨，满满的胶原蛋白。", img: "./images/jizhuabao.jpg", category: "中餐", subcategory: "主菜",
                 customOptions: [
                     { title: "辣度", choices: ["不辣", "微辣", "中辣", "超级辣"] },
                     { title: "配菜", choices: ["请备注想要的配菜"] }
                 ]
             },
             { 
-                id: 5, name: "冰粉", price: 22, desc: "", img: "./images/binfen.jpg", category: "中餐", subcategory: "甜点",
+                id: 5, name: "手搓冰粉", price: 38, desc: "古法手搓冰粉，沁人心脾。", img: "./images/binfen.jpg", category: "中餐", subcategory: "甜点",
                 customOptions: [
                     { title: "配料", choices: ["请备注想要的配料，默认红糖"] }
                 ]
             },
             { 
-                id: 6, name: "钵仔糕", price: 26, desc: "", img: "./images/bozaigao.jpg", category: "中餐", subcategory: "甜点",
+                id: 6, name: "手工钵仔糕", price: 32, desc: "传统手作，Q弹软糯，还原童年的地道广式街头风味。", img: "./images/bozaigao.jpg", category: "中餐", subcategory: "甜点",
                 customOptions: [
                     { title: "口味", choices: ["请备注想要的口味"]}
                 ]
             },
             { 
-                id: 7, name: "Poke Bowl", price: 128, desc: "健康低脂夏威夷波奇饭", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                id: 7, name: "经典 Poke Bowl", price: 128, desc: "健康低脂夏威夷波奇饭", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
                 customOptions: [
                     { title: "食材", choices: ["时令食材"] },
                     { title: "忌口", choices: ["如有忌口或过敏请备注"] }
                 ]
             },
             { 
-                id: 8, name: "巴斯克蛋糕", price: 128, desc: "", img: "./images/basike.jpg", category: "西餐", subcategory: "甜点",
+                id: 8, name: "巴斯克焦香芝士蛋糕", price: 58, desc: "微焦外皮包裹流心半熟芝士，口感醇厚细腻，入口即化。", img: "./images/basike.jpg", category: "西餐", subcategory: "甜点",
                 customOptions: [
                     { title: "口味", choices: ["原味", "备注"] },
                     { title: "口感", choices: ["清爽（牛奶）", "醇厚（奶油）"] }
                 ]
             },
             { 
-                id: 9, name: "笋粄", price: 128, desc: "", img: "./images/sunban.jpg", category: "中餐", subcategory: "小吃",
+                id: 9, name: "客家笋粄", price: 58, desc: "传统手作外皮柔韧透亮，包裹鲜香冬笋与黑猪肉糜，鲜味四溢。", img: "./images/sunban.jpg", category: "中餐", subcategory: "小吃",
                 customOptions: [
                 ]
             },
             { 
-                id: 10, name: "榴莲披萨", price: 128, desc: "", img: "./images/liulianpizza.jpg", category: "西餐", subcategory: "小吃",
+                id: 10, name: "猫山王榴莲披萨", price: 138, desc: "铺满厚重猫山王榴莲果肉，搭配拉丝马苏里拉芝士，香气浓郁扑鼻。", img: "./images/liulianpizza.jpg", category: "西餐", subcategory: "小吃",
                 customOptions: [
                     { title: "尺寸", choices: ["小", "大"] }
                 ]
             },
             { 
-                id: 11, name: "腐皮寿司", price: 128, desc: "", img: "./images/fupishousi.jpg", category: "日韩料理", subcategory: "主菜",
+                id: 11, name: "腐皮寿司", price: 68, desc: "秘制日式高汤豆皮，包裹软糯越光米与时令鲜材，酸甜开胃。", img: "./images/fupishousi.jpg", category: "日韩料理", subcategory: "主菜",
                 customOptions: [
                     { title: "食材", choices: ["时令食材"] },
                     { title: "忌口", choices: ["如有忌口或过敏请备注"] }
                 ]
             },
             { 
-                id: 12, name: "上汤白菜", price: 128, desc: "", img: "./images/shangtangbaicai.jpg", category: "中餐", subcategory: "汤",
+                id: 12, name: "金汤高汤白菜", price: 88, desc: "老母鸡与金华火腿慢熬吊汤，煨煮鲜嫩白菜心，清鲜至极的功夫菜。", img: "./images/shangtangbaicai.jpg", category: "中餐", subcategory: "汤",
                 customOptions: [
                 ]
             },
             { 
-                id: 13, name: "煎饺", price: 128, desc: "", img: "./images/shangtangbaicai.jpg", category: "中餐", subcategory: "小吃",
-                customOptions: [
-                    { title: "馅料", choices: ["请备注"] }
-                ]
-            },
-            { 
-                id: 14, name: "番薯芝士夹心糯米饼", price: 128, desc: "", img: "./images/fanshuzhishijiaxinnuomibing.jpg", category: "中餐", subcategory: "小吃",
-                customOptions: [
-                ]
-            },
-            { 
-                id: 15, name: "打抛饭", price: 128, desc: "", img: "./images/dapaofan.jpg", category: "中餐", subcategory: "主菜",
-                customOptions: [
-                    { title: "辣度", choices: ["不辣", "微辣", "中辣", "超级辣"] }
-                ]
-            },
-            { 
-                id: 16, name: "馄饨", price: 128, desc: "", img: "./images/huntun.jpg", category: "中餐", subcategory: "主菜",
+                id: 13, name: "冰花脆皮煎饺", price: 58, desc: "底部冰花酥脆，内馅爆汁满溢，手工现包现煎的温暖美味。", img: "./images/shangtangbaicai.jpg", category: "中餐", subcategory: "小吃",
                 customOptions: [
                     { title: "馅料", choices: ["请备注"] }
                 ]
             },
             { 
-                id: 17, name: "柠檬鸡爪", price: 128, desc: "", img: "./images/ningmengjizhua.jpg", category: "中餐", subcategory: "主菜",
+                id: 14, name: "番薯芝士夹心糯米饼", price: 48, desc: "绵密红薯与拉丝芝士的完美交融，外酥里糯的暖心治愈甜点。", img: "./images/fanshuzhishijiaxinnuomibing.jpg", category: "中餐", subcategory: "小吃",
+                customOptions: [
+                ]
+            },
+            { 
+                id: 15, name: "泰式打抛猪肉饭", price: 88, desc: "地道曼谷街头风味，九层塔的辛香与肉碎的鲜辣完美融合，下饭神器。", img: "./images/dapaofan.jpg", category: "中餐", subcategory: "主菜",
                 customOptions: [
                     { title: "辣度", choices: ["不辣", "微辣", "中辣", "超级辣"] }
                 ]
             },
             { 
-                id: 18, name: "泡菜炒饭", price: 128, desc: "", img: "./images/paocaichaofan.jpg", category: "日韩料理", subcategory: "主菜",
+                id: 16, name: "高汤手包大馄饨", price: 68, desc: "皮薄如纱肉馅饱满，搭配慢熬骨汤与灵魂猪油，清鲜抚慰肠胃。", img: "./images/huntun.jpg", category: "中餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "馅料", choices: ["请备注"] }
+                ]
+            },
+            { 
+                id: 17, name: "泰式青柠爽脆鸡爪", price: 78, desc: "鲜切香水柠檬与秘制东南亚酸辣汁浸泡，无骨脆爽，开胃下酒佳品。", img: "./images/ningmengjizhua.jpg", category: "中餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "辣度", choices: ["不辣", "微辣", "中辣", "超级辣"] }
+                ]
+            },
+            { 
+                id: 18, name: "首尔街头泡菜炒饭", price: 78, desc: "大火翻炒发酵老泡菜与优质珍珠米，裹满诱人色泽，锅气十足。", img: "./images/paocaichaofan.jpg", category: "日韩料理", subcategory: "主菜",
                 customOptions: [
                     { title: "食材", choices: ["肉末", "五花肉"] }
                 ]
             },
             { 
-                id: 19, name: "肉丸汤", price: 128, desc: "", img: "./images/niurouwantang.jpg", category: "中餐", subcategory: "汤",
+                id: 19, name: "手打原汁肉丸汤", price: 88, desc: "每日现打纯肉丸，肉质弹牙有嚼劲，汤头清洌甘甜不加一滴味精。", img: "./images/niurouwantang.jpg", category: "中餐", subcategory: "汤",
                 customOptions: [
                     { title: "肉丸", choices: ["请备注想要的肉丸种类"]}
                 ]
             },
             { 
-                id: 20, name: "黑椒牛柳意面", price: 128, desc: "", img: "./images/heijiaoniuniuyimian.jpg", category: "西餐", subcategory: "主菜",
+                id: 20, name: "黑椒牛柳意面", price: 108, desc: "鲜嫩牛柳佐以浓郁黑胡椒汁，意面裹满酱香，中西合璧的绝妙平衡。", img: "./images/heijiaoniuniuyimian.jpg", category: "西餐", subcategory: "主菜",
                 customOptions: [
                 ]
             },
             { 
-                id: 21, name: "糯米烧麦", price: 128, desc: "", img: "./images/nuomishaomai.jpg", category: "中餐", subcategory: "小吃",
+                id: 21, name: "酱香糯米烧麦", price: 48, desc: "薄皮包裹酱香浓郁的软糯米粒与香菇肉丁，口口满足的碳水快乐。", img: "./images/nuomishaomai.jpg", category: "中餐", subcategory: "小吃",
                 customOptions: [
                 ]
             },
             { 
-                id: 22, name: "春卷", price: 128, desc: "", img: "./images/chunjuan.jpg", category: "中餐", subcategory: "小吃",
+                id: 22, name: "脆皮素春卷", price: 48, desc: "金黄酥脆的外皮，锁住时令鲜蔬的脆嫩多汁，佐以秘制蘸酱。", img: "./images/chunjuan.jpg", category: "中餐", subcategory: "小吃",
                 customOptions: [
                     { title: "配菜", choices: ["请备注想要的配菜"] }
                 ]
             },
             { 
-                id: 23, name: "肉松小贝", price: 128, desc: "", img: "./images/rousongxiaobei.jpg", category: "中餐", subcategory: "小吃",
+                id: 23, name: "海苔肉松小贝", price: 38, desc: "绵软蛋糕胚涂满特调爆浆沙拉酱，外层裹满酥脆海苔与高品质肉松。", img: "./images/rousongxiaobei.jpg", category: "中餐", subcategory: "小吃",
                 customOptions: [
                 ]
             },
             { 
-                id: 24, name: "盐焗鹌鹑蛋", price: 128, desc: "", img: "./images/yanjuanchundan.jpg", category: "中餐", subcategory: "小吃",
+                id: 24, name: "古法盐焗鹌鹑蛋", price: 38, desc: "粗海盐慢火温焗，蛋衣微焦带香，内里醇厚，惹味又解馋的餐前小吃。", img: "./images/yanjuanchundan.jpg", category: "中餐", subcategory: "小吃",
                 customOptions: [
                 ]
             },
             { 
-                id: 25, name: "泡菜饼", price: 128, desc: "", img: "./images/paocaibing.jpg", category: "日韩料理", subcategory: "主菜",
+                id: 25, name: "韩风海鲜泡菜饼", price: 78, desc: "外边缘焦脆，内里软糯酸辣，搭配海鲜的韩式经典铁板风味。", img: "./images/paocaibing.jpg", category: "日韩料理", subcategory: "主菜",
                 customOptions: [
                     { title: "食材", choices: ["时令食材"] },
                     { title: "忌口", choices: ["如有忌口或过敏请备注"] }
