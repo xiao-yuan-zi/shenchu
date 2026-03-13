@@ -219,7 +219,6 @@
         .btn-confirm { flex: 2; background: var(--text-main); border: none; color: #fff; padding: 14px; border-radius: 12px; cursor: pointer; letter-spacing: 1px; font-family: "Noto Serif SC", serif; font-weight: 600; transition: opacity 0.2s;}
         .btn-confirm:hover { opacity: 0.9; }
 
-        /* 弹窗内的数量选择器 */
         .modal-qty-row {
             display: flex; justify-content: space-between; align-items: center; 
             padding-top: 15px; border-top: 1px solid var(--border-color); margin-top: 20px;
@@ -281,7 +280,6 @@
         <input type="hidden" id="currentItemId">
         <input type="hidden" id="editingCartId">
         
-        <!-- JavaScript会自动把定制选项插入到这里 -->
         <div id="dynamicOptionsContainer"></div>
 
         <div class="form-group">
@@ -304,6 +302,7 @@
         </div>
     </div>
 
+    <!-- 确认下单弹窗 -->
     <div class="modal" id="checkoutModal">
         <h2 class="serif-text">确认下单</h2>
         
@@ -311,17 +310,10 @@
             <textarea name="完整订单详情" id="finalOrderDetails" style="display: none;"></textarea>
             <input type="hidden" name="订单总价" id="finalOrderTotal">
 
+            <!-- 根据你的要求，这里只保留了称呼，删掉了电话和地址 -->
             <div class="form-group">
                 <label>您的称呼</label>
                 <input type="text" name="顾客名字" required placeholder="如：张先生">
-            </div>
-            <div class="form-group">
-                <label>联系电话</label>
-                <input type="text" name="电话号码" required placeholder="请输入手机号">
-            </div>
-            <div class="form-group">
-                <label>送餐地址或桌号</label>
-                <input type="text" name="地址或桌号" required placeholder="如：3号桌 或 XX小区...">
             </div>
             
             <div class="modal-actions">
@@ -331,11 +323,16 @@
         </form>
     </div>
 
+    <!-- 【新增】下单成功提示弹窗 -->
+    <div class="modal" id="successModal" style="text-align: center; padding: 40px 20px;">
+        <div style="font-size: 60px; color: var(--text-main); margin-bottom: 10px;">✓</div>
+        <h2 class="serif-text" style="margin-bottom: 10px; border:none;">下单成功</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">您的订单已成功发送至后厨，请稍作等待。</p>
+        <button class="btn-confirm" style="width: 100%;" onclick="closeAllModals()">回到首页</button>
+    </div>
+
     <script>
         // ================= 数据源 =================
-        // https://tinypng.com/
-        // 如何加新的菜品
-        // 1. 
         const menuData = [
             { 
                 id: 3, name: "福鼎肉片", price: 38, desc: "手工千锤百炼的精瘦鲜肉与地道红薯粉完美融合，佐以酸辣紫菜清汤，口感爽滑弹牙。", img: "./images/fudingroupian.jpg", category: "中餐", subcategory: "小吃",
@@ -544,7 +541,6 @@
             items.forEach(item => {
                 grid.innerHTML += `
                     <div class="menu-item">
-                        <!-- 【提速黑科技】加上了 loading="lazy"，不在屏幕里的图片不会提前下载，网页秒开！ -->
                         <img src="${item.img}" loading="lazy" alt="${item.name}">
                         <div class="item-info">
                             <h3 class="serif-text">${item.name}</h3>
@@ -576,13 +572,20 @@
         const overlay = document.getElementById('overlay');
         const itemModal = document.getElementById('itemModal');
         const checkoutModal = document.getElementById('checkoutModal');
+        const successModal = document.getElementById('successModal');
 
         function closeAllModals() {
             overlay.classList.remove('show');
+            itemModal.classList.remove('show');
+            checkoutModal.classList.remove('show');
+            successModal.classList.remove('show');
+            
             setTimeout(() => {
-                itemModal.classList.remove('show');
-                checkoutModal.classList.remove('show');
-            }, 50);
+                itemModal.style.display = 'none';
+                checkoutModal.style.display = 'none';
+                successModal.style.display = 'none';
+            }, 300);
+            
             document.getElementById('sidebar').classList.remove('open');
             document.getElementById('cartDrawer').classList.remove('open');
         }
@@ -775,6 +778,55 @@
             overlay.classList.add('show');
             setTimeout(() => checkoutModal.classList.add('show'), 10);
         }
+
+        // ================= 【新增】处理表单提交，防止页面跳转 =================
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止浏览器默认的提交跳转行为
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "正在发送...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+
+            // 使用 fetch API 在后台发送数据
+            fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // 1. 清空购物车
+                    cart = [];
+                    updateCartUI();
+                    
+                    // 2. 隐藏结账弹窗，显示成功弹窗
+                    document.getElementById('checkoutModal').classList.remove('show');
+                    setTimeout(() => {
+                        document.getElementById('checkoutModal').style.display = 'none';
+                        const successModal = document.getElementById('successModal');
+                        successModal.style.display = 'block';
+                        setTimeout(() => successModal.classList.add('show'), 10);
+                    }, 300);
+                    
+                    // 3. 恢复表单状态以便下次使用
+                    this.reset();
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                } else {
+                    alert("提交失败，请重试！");
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
+            }).catch(error => {
+                alert("网络错误，请检查连接后重试！");
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            });
+        });
 
         window.onload = initApp;
 
