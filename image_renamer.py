@@ -55,7 +55,7 @@ class ImageRenamerApp:
         all_files = os.listdir(self.folder_path)
         self.images = [
             f for f in all_files 
-            if f.upper().startswith("IMG") and f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.heic'))
+            if f.upper().startswith("IMG") or f.upper().startswith("微信") and f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.heic'))
         ]
         
         if not self.images:
