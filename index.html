@@ -333,6 +333,9 @@
 
     <script>
         // ================= 数据源 =================
+        // https://tinypng.com/
+        // 如何加新的菜品
+        // 1. 
         const menuData = [
             { 
                 id: 1, name: "福鼎肉片", price: 68, desc: "弹牙爽口", 
@@ -352,21 +355,21 @@
                 customOptions: [] 
             },
             { 
-                id: 3, name: "清炒时蔬", price: 28, desc: "每日新鲜采摘，健康美味。", 
+                id: 3, name: "钵钵鸡", price: 28, desc: "每日新鲜采摘，健康美味。", 
                 img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", category: "中餐", subcategory: "主菜",
                 customOptions: [
                     { title: "口味", choices: ["清淡少油", "正常", "多蒜蓉"] }
                 ]
             },
             { 
-                id: 4, name: "黑松露牛排", price: 298, desc: "M8和牛搭配现刨黑松露，五分熟极致口感。", img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", category: "西餐", subcategory: "主菜",
+                id: 4, name: "卤鸡爪", price: 298, desc: "M8和牛搭配现刨黑松露，五分熟极致口感。", img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", category: "西餐", subcategory: "主菜",
                 customOptions: [
                     { title: "熟度", choices: ["三分熟 (Medium Rare)", "五分熟 (Medium)", "七分熟 (Medium Well)"] }
                 ]
             },
             // 这里有子分类“冷饮”
             { 
-                id: 5, name: "鸭屎香冰柠茶", price: 22, desc: "爆打香水柠檬，清爽解腻。", img: "https://images.unsplash.com/photo-1556881286-fc6915169721?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", category: "饮品", subcategory: "冷饮",
+                id: 5, name: "冰粉", price: 22, desc: "爆打香水柠檬，清爽解腻。", img: "https://images.unsplash.com/photo-1556881286-fc6915169721?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", category: "饮品", subcategory: "冷饮",
                 customOptions: [
                     { title: "冰度", choices: ["正常冰", "少冰", "去冰"] },
                     { title: "甜度", choices: ["正常糖", "七分糖", "半糖", "无糖"] }
@@ -374,19 +377,69 @@
             },
             // 新增一道“热饮”来展示动态分类的魔力
             { 
-                id: 6, name: "桂圆红枣茶", price: 26, desc: "养颜暖胃，冬日特供。", img: "https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", category: "饮品", subcategory: "热饮",
+                id: 6, name: "钵仔糕", price: 26, desc: "养颜暖胃，冬日特供。", img: "https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", category: "饮品", subcategory: "热饮",
                 customOptions: [
                     { title: "甜度", choices: ["正常糖", "少糖", "无糖"] }
                 ]
             },
             // 新增一个以前不存在的主分类，系统也能自动识别！
             { 
-                id: 7, name: "经典Poke Bowl", price: 45, desc: "健康低脂夏威夷波奇饭。", img: "./images/poke.jpg", category: "轻食", subcategory: "沙拉",
+                id: 7, name: "Poke Bowl", price: 128, desc: "健康低脂夏威夷波奇饭。", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
                 customOptions: [
                     { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
                     { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
                 ]
-            }
+            }，
+            { 
+                id: 8, name: "", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+            { 
+                id: 9, name: "", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+            { 
+                id: 10, name: "Poke Bowl", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+            { 
+                id: 11, name: "Poke Bowl", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+            { 
+                id: 12, name: "Poke Bowl", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+            { 
+                id: 13, name: "Poke Bowl", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+            { 
+                id: 14, name: "Poke Bowl", price: 128, desc: "", img: "./images/poke.jpg", category: "西餐", subcategory: "主菜",
+                customOptions: [
+                    { title: "基底", choices: ["糙米饭", "混合沙拉", "各半"] },
+                    { title: "酱料", choices: ["油醋汁", "焙煎芝麻酱", "泰式甜辣酱"] }
+                ]
+            }，
+
         ];
 
         let cart = [];
